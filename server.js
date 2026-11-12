@@ -12,11 +12,12 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 
 dotenv.config();
-await connectDB(process.env.MONGO_URI, process.env.DB_NAME);
 const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 9500;
+
+connectDB(process.env.MONGO_URI, process.env.DB_NAME);
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
